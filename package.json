@@ -12,16 +12,34 @@
   ],
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
     }
   },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional",
+      "cz"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    }
+  },
   "lint-staged": {
-    "*.{js,vue,ts,tsx}": [
-      "npm run lint:js",
-      "git add"
+    "./*.js": [
+      "yarn prettier",
+      "git add -A"
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@types/fs-extra": "^8.0.1",
+    "commitizen": "^4.0.3",
+    "commitlint-config-cz": "^0.13.0",
+    "cz-customizable": "^6.2.0",
     "eslint": "^6.7.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.7.0",
@@ -32,8 +50,7 @@
     "lint-staged": "^9.5.0",
     "multiparty": "^4.2.1",
     "nodemon": "^2.0.1",
-    "prettier": "^1.19.1",
-    "@types/fs-extra": "^8.0.1"
+    "prettier": "^1.19.1"
   },
   "license": "MIT"
 }
