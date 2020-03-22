@@ -50,7 +50,7 @@ const handleFormData = (req, res) => {
       res.end("process file chunk failed");
       return;
     }
-    const [file] = files.fileSlice;
+    const [file] = files.chunk;
     const [name] = fields.name;
     const [index] = fields.index;
     const splitPoint = file.path.lastIndexOf("/");
